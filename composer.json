@@ -1,5 +1,5 @@
 {
     "require": {
-        "overtrue/pinyin": "2.6.0"
+        "overtrue/pinyin": "~2.6"
     }
 }

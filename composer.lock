@@ -4,21 +4,21 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "aa2af25ec7e4a0457b5e194363baddd4",
-    "content-hash": "a28564766ec34656658bc2e27a1e75cd",
+    "hash": "c2e2f0642b48f0c006cdbc6a65d16ef6",
+    "content-hash": "078ac3facd21844e09b29b12dc40fc58",
     "packages": [
         {
             "name": "overtrue/pinyin",
-            "version": "2.6.0",
+            "version": "2.6.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/overtrue/pinyin.git",
-                "reference": "c579f00f10eebabd7685c940409633bd2001932c"
+                "reference": "787cf837192ac8bd97386200fc66d513c0de7657"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/overtrue/pinyin/zipball/c579f00f10eebabd7685c940409633bd2001932c",
-                "reference": "c579f00f10eebabd7685c940409633bd2001932c",
+                "url": "https://api.github.com/repos/overtrue/pinyin/zipball/787cf837192ac8bd97386200fc66d513c0de7657",
+                "reference": "787cf837192ac8bd97386200fc66d513c0de7657",
                 "shasum": ""
             },
             "type": "library",
@@ -27,7 +27,7 @@
                     "Overtrue\\": "src/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "notification-url": "http://pkg.overtrue.me/downloads/",
             "license": [
                 "MIT"
             ],
@@ -44,7 +44,7 @@
                 "Pinyin",
                 "cn2pinyin"
             ],
-            "time": "2015-08-01 04:52:56"
+            "time": "2016-01-19 06:57:04"
         }
     ],
     "packages-dev": [],

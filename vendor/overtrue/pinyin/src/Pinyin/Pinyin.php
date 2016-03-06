@@ -31,14 +31,7 @@ class Pinyin
      *
      * @var array
      */
-    protected static $dictionary;
-
-    /**
-     * Appends words.
-     *
-     * @var array
-     */
-    protected static $appends = array();
+    protected static $dictionary = array();
 
     /**
      * Settings.
@@ -50,7 +43,14 @@ class Pinyin
                                   'accent' => true,
                                   'only_chinese' => false,
                                   'uppercase' => false,
+                                  'charset' => 'UTF-8'  // GB2312,UTF-8
                                  );
+    /**
+     * Internal charset used by this package.
+     *
+     * @var string
+     */
+    protected static $internalCharset = 'UTF-8';
 
     /**
      * The instance.
@@ -66,8 +66,9 @@ class Pinyin
      */
     private function __construct()
     {
-        if (is_null(static::$dictionary)) {
-            self::$dictionary = json_decode(file_get_contents(dirname(__DIR__).'/data/dict.php'), true);
+        if (empty(static::$dictionary)) {
+            $list = json_decode(file_get_contents(dirname(__DIR__).'/data/dict.php'), true);
+            static::appends($list);
         }
     }
 
@@ -138,6 +139,8 @@ class Pinyin
      */
     public static function letter($string, array $settings = array())
     {
+        $settings = array_merge($settings, array('accent' => false, 'only_chinese' => true));
+
         $parsed = self::parse($string, $settings);
 
         return $parsed['letter'];
@@ -156,8 +159,14 @@ class Pinyin
     public static function parse($string, array $settings = array())
     {
         $instance = static::getInstance();
+        $raw      = $string;
 
         $settings = array_merge(self::$settings, $settings);
+
+        // add charset set
+        if (!empty($settings['charset']) && $settings['charset'] != static::$internalCharset) {
+            $string = iconv($settings['charset'], static::$internalCharset, $string);
+        }
 
         // remove non-Chinese char.
         if ($settings['only_chinese']) {
@@ -177,7 +186,7 @@ class Pinyin
         $delimitedPinyin = $instance->delimit($pinyin, $settings['delimiter']);
 
         $return = array(
-                   'src' => $string,
+                   'src' => $raw,
                    'pinyin' => stripslashes($delimitedPinyin),
                    'letter' => stripslashes($instance->getFirstLetters($source, $settings)),
                   );
@@ -192,7 +201,11 @@ class Pinyin
      */
     public static function appends(array $appends)
     {
-        static::$dictionary = array_merge(self::$dictionary, static::formatWords($appends));
+        $list = static::formatWords($appends);
+        foreach ($list as $key => $value) {
+            $firstChar = mb_substr($key, 0, 1, static::$internalCharset);
+            self::$dictionary[$firstChar][$key] = $value;
+        }
     }
 
     /**
@@ -233,7 +246,18 @@ class Pinyin
      */
     protected function string2pinyin($string)
     {
-        $pinyin = strtr($this->prepare($string), self::$dictionary);
+        $preparedString = $this->prepare($string);
+        $count = mb_strlen($preparedString, static::$internalCharset);
+        $dictionary = array();
+
+        $i = 0;
+        while ($i < $count) {
+            $char = mb_substr($preparedString, $i++, 1, static::$internalCharset);
+            $pinyinGroup = isset(self::$dictionary[$char]) ? self::$dictionary[$char] : array();
+            $dictionary = array_merge($dictionary, $pinyinGroup);
+        }
+
+        $pinyin = strtr($preparedString, $dictionary);
 
         return trim(str_replace('  ', ' ', $pinyin));
     }
@@ -263,6 +287,8 @@ class Pinyin
      */
     protected static function formatDictPinyin($pinyin)
     {
+        $pinyin = trim($pinyin);
+
         return preg_replace_callback('/[a-z]{1,}:?\d{1}\s?/i', function ($matches) {
             return strtolower($matches[0]);
         }, " {$pinyin} ");
@@ -312,10 +338,18 @@ class Pinyin
      * Add delimiter.
      *
      * @param string $string
+     * @param string $delimiter
+     *
+     * @return string
      */
     protected function delimit($string, $delimiter = '')
     {
-        return preg_replace('/\s+/', strval($delimiter), trim($string));
+        $defaultEncoding = mb_regex_encoding();
+        mb_regex_encoding(static::$internalCharset);
+        $string = mb_ereg_replace('\s+', strval($delimiter), trim($string));
+        mb_regex_encoding($defaultEncoding);
+
+        return $string;
     }
 
     /**
