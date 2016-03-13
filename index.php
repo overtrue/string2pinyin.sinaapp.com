@@ -22,7 +22,7 @@ else
     }
 }
 
-header('content-type:application/json;charset:utf-8');
+header('content-type:application/json; charset=utf-8');
 
 if (empty($str)) {
     header("HTTP/1.0 400 Bad Request");
