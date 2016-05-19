@@ -26,7 +26,7 @@ header('content-type:application/json;charset:utf-8');
 
 if (empty($str)) {
     header("HTTP/1.0 400 Bad Request");
-    exit(json_encode(array('status' => 'F', 'error' => '错误的请求,参数str不能为空。' , 'doc' => 'http://string2pinyin.sinaapp.com/doc.html')));
+    exit(json_encode(array('status' => 'F', 'error' => '错误的请求,参数str不能为空。' , 'doc' => 'http://string2pinyin.sinaapp.com/doc.php')));
 }
 
 
@@ -45,8 +45,6 @@ $array = array(
         'str'     => $str,
         'result'  => $result
     );
-
-$array['doc'] = 'http://string2pinyin.sinaapp.com/doc.html';
 
 header('X-Time-usage:' . (microtime(true) - TIME_START));
 exit(json_encode($array));
