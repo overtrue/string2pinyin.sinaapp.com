@@ -10,68 +10,38 @@
 </head>
 <body>
     <div class="wrapper">
-        <h1>Hi,欢迎使用中文转拼音服务</h1>
-
-        <h2>API址址：</h2><code><a href="http://string2pinyin.sinaapp.com/?str=中文" target="_blank">http://string2pinyin.sinaapp.com/?str=中文</a></code>
-
-        <h2>参数</h2>
-        <ul>
-            <li><code>str</code> - * 中文内容</li>
-            <li><code>delimiter</code> - 分隔符，默认为一个空格<code>' '</code></li>
-            <li><code>traditional</code> - 使用繁体, 默认:<code>0</code></li>
-            <li><code>accent</code> - 是否输出音调，默认:<code>1</code></li>
-            <li><code>letter</code> - 只输出首字母，或者直接使用 <code>Pinyin::letter($string)</code></li>
-            <li><code>only_chinese</code>只保留 <code>$string</code> 中中文部分, 默认:<code>0</code> </li>
-        </ul>
-
-        <h2>响应</h2>
-        <h4>正确：</h4>
-        <div class="border">
-            <div class="json"><div class="collapser"></div>{<span class="ellipsis"></span><ul class="obj collapsible"><li><div class="hoverable"><span class="property">status</span>: <span class="type-string">"T"</span>,</div></li><li><div class="hoverable"><span class="property">str</span>: <span class="type-string">"中文转拼音服务"</span>,</div></li><li><div class="hoverable"><span class="property">pinyin</span>: <span class="type-string">"zhōng wén zhuǎn pīn yīn fú wù"</span>,</div></li><li><div class="hoverable"><span class="property">setting</span>: <div class="collapser"></div>{<span class="ellipsis"></span><ul class="obj collapsible"><li><div class="hoverable"><span class="property">accent</span>: <span class="type-boolean">true</span>,</div></li><li><div class="hoverable"><span class="property">delimiter</span>: <span class="type-string">" "</span>,</div></li><li><div class="hoverable"><span class="property">traditional</span>: <span class="type-boolean">false</span>,</div></li><li><div class="hoverable"><span class="property">letter</span>: <span class="type-boolean">false</span>,</div></li><li><div class="hoverable"><span class="property">only_chinese</span>: <span class="type-boolean">false</span></div></li></ul>},</div></li><li><div class="hoverable"><span class="property">doc</span>: <span class="type-string">"</span><a href="http://string2pinyin.sinaapp.com/doc.html">http://string2pinyin.sinaapp.com/doc.html</a><span class="type-string">"</span></div></li></ul>}</div>
+        <div class="docs">
+            h1><a id="Hi_0"></a>Hi,欢迎使用中文转拼音服务</h1>
+            <h2><a id="API__2"></a>API 地址</h2>
+            <pre><code>http://string2pinyin.sinaapp.com/?str=中文
+            </code></pre>
+            <h2><a id="_8"></a>参数</h2>
+            <ul>
+            <li><code>api</code> - 需要使用的 API 名称，可选：<code>convert/permlink/abbr/sentence/name</code>,具体请参考：<a href="https://github.com/overtrue/pinyin">https://github.com/overtrue/pinyin</a></li>
+            <li><code>option</code> 选项，对应 API 的第二个参数，具体请参考对应的 API：<a href="https://github.com/overtrue/pinyin">https://github.com/overtrue/pinyin</a></li>
+            </ul>
+            <h2><a id="_13"></a>响应</h2>
+            <p>正确：</p>
+            <pre><code class="language-json">{
+                status: "T",
+                str: "中文转拼音服务",
+                result: ["zhong","wen","zhuan","pin","yin","fu","wu"],
+            }
+            </code></pre>
+            <p>失败：</p>
+            <pre><code class="language-json">{
+                status: "F",
+                error: "错误的请求,参数str不能为空。",
+                doc: "http://string2pinyin.sinaapp.com/doc.html"
+            }
+            </code></pre>
+            <h2><a id="_35"></a>说明</h2>
+            <ul>
+            <li>本项目基于 <a href="https://github.com/overtrue/pinyin">overtrue/pinyin</a> 完成</li>
+            <li>作者：<a href="https://github.com/overtrue">@overtrue</a></li>
+            <li>微博：<a href="http://weibo.com/44294631">@安正超</a></li>
+            </ul>
         </div>
-        <h4>失败：</h4>
-        <div class="border">
-            <div class="json"><div class="collapser"></div>{<span class="ellipsis"></span><ul class="obj collapsible"><li><div class="hoverable"><span class="property">status</span>: <span class="type-string">"F"</span>,</div></li><li><div class="hoverable"><span class="property">error</span>: <span class="type-string">"错误的请求,参数str不能为空。"</span>,</div></li><li><div class="hoverable"><span class="property">doc</span>: <span class="type-string">"</span><a href="http://string2pinyin.sinaapp.com/doc.html">http://string2pinyin.sinaapp.com/doc.html</a><span class="type-string">"</span></div></li></ul>}</div>
-        </div>
-        <p><code>status</code>: <code>T(true), F(false)</code></p>
-
-        <h2>说明</h2>
-        <ul>
-            <li>本项目基于<a href="https://github.com/overtrue/pinyin">overtrue/pinyin</a>完成</li>
-            <li>作者：<a href="https://github.com/overtrue" target="_blank">@overtrue</a></li>
-            <li>微博：<a href="http://weibo.com/joychaocc" target="_blank">@安正超</a></li>
-        </ul>
-
-        <h2>分享</h2>
-        <div class="sns-share">
-            <i data-id="sina" class="icon">
-                <svg><use xlink:href="/assets/images/sns.svg#icon-iconfont-sina" transform="translate(0 0)"></use></svg>
-            </i>
-            <i data-id="qzone" class="icon">
-                <svg><use xlink:href="/assets/images/sns.svg#icon-iconfont-qzone" transform="translate(0 0)"></use></svg>
-            </i>
-            <i data-id="qq" class="icon">
-                <svg><use xlink:href="/assets/images/sns.svg#icon-iconfont-qq" transform="translate(0 0)"></use></svg>
-            </i>
-            <i data-id="renren" class="icon">
-                <svg><use xlink:href="/assets/images/sns.svg#icon-iconfont-renren" transform="translate(0 0)"></use></svg>
-            </i>
-            <i data-id="douban" class="icon">
-                <svg><use xlink:href="/assets/images/sns.svg#icon-iconfont-douban" transform="translate(0 0)"></use></svg>
-            </i>
-        </div>
-        <!-- 引入sns.js -->
-        <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.2.min.js"></script>
-        <script src="/assets/js/sns.js"></script>
-        <script type="text/javascript">
-            $(document).ready(function(){
-                var config = {}; /* 配置 */
-                SNS.init(config);
-                $('.sns-share i').click(function(){
-                    SNS.share($(this).data('id'));
-                });
-            });
-        </script>
 
         <script>
             fixScale = function(doc) {

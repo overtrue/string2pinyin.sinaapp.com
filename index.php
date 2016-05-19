@@ -7,16 +7,16 @@ use Overtrue\Pinyin\Pinyin;
 
 $str = html_entity_decode(strip_tags(trim($_GET['str'])));
 
-//file_put_contents(__DIR__ . '/logs/query'.date('Y-m-d').'.txt', $str."\n", FILE_APPEND);
-$mmc=memcache_init();
+$mmc = memcache_init();
 
-if($mmc == false)
+if ($mmc == false) {
     echo "mc init failed\n";
-else
-{
+} else {
     $key = date('Y-m-d');
     $log = memcache_get($mmc, $key) . "\n" . $str;
+
     memcache_set($mmc, $key, $log);
+
     if (!empty($_GET['log'])) {
         var_dump($log);exit;
     }
@@ -30,32 +30,22 @@ if (empty($str)) {
 }
 
 
-// 'delimiter'    => ' ',
-// 'traditional'  => false,
-// 'accent'       => true,
-// 'letter'       => false,
-// 'only_chinese' => false,
 $setting = array(
-        'accent'       => abs(array_get($_GET, 'accent', 1)),
-        'delimiter'    => array_get($_GET, 'delimiter', ' '),
-        'traditional'  => abs(array_get($_GET, 'traditional', 0)),
-        'letter'       => abs(array_get($_GET, 'letter', 0)),
-        'only_chinese' => abs(array_get($_GET, 'only_chinese', 0)),
+        'api'       => abs(array_get($_GET, 'api', 'convert')),
+        'option'    => array_get($_GET, 'option', PINYIN_NONE),
     );
 
-$pinyin = Pinyin::parse($str, $setting);
+
+$pinyin = new Pinyin;
+
+$result = $pinyin->{$setting['api']}($str, $setting['options']);
 
 $array = array(
         'status'  => 'T',
         'str'     => $str,
-        'pinyin'  => $pinyin['pinyin'],
+        'result'  => $result
     );
 
-if (abs(array_get($_GET, 'letter', 0))) {
-    $array['letter'] = $pinyin['letter'];
-}
-
-$array['setting'] = $setting;
 $array['doc'] = 'http://string2pinyin.sinaapp.com/doc.html';
 
 header('X-Time-usage:' . (microtime(true) - TIME_START));
