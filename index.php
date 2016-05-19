@@ -24,21 +24,46 @@ if ($mmc == false) {
 
 header('content-type:application/json;charset:utf-8');
 
+$error = '';
+
 if (empty($str)) {
-    header("HTTP/1.0 400 Bad Request");
-    exit(json_encode(array('status' => 'F', 'error' => '错误的请求,参数str不能为空。' , 'doc' => 'http://string2pinyin.sinaapp.com/doc.php')));
+    error('错误的请求,参数str不能为空。');
 }
 
+$api = array_get($_GET, 'api', 'convert');
+$option = array_get($_GET, 'option', null);
 
-$setting = array(
-        'api'       => abs(array_get($_GET, 'api', 'convert')),
-        'option'    => array_get($_GET, 'option', PINYIN_NONE),
-    );
+switch ($api) {
+    case 'convert':
+    case 'name':
+        if (empty($option)) {
+            $option = PINYIN_NONE;
+        }
+        if (!in_array($option, array(PINYIN_NONE, PINYIN_ASCII, PINYIN_UNICODE))) {
+            error('错误的 option.');
+        }
+        break;
+    case 'permlink':
+    case 'abbr':
+        if (empty($option)) {
+            $option = '-';
+        }
+
+        if (!is_string($option)) {
+            error('错误的 option.');
+        }
+        break;
+    case 'sentence':
+        $option = (bool)$option;
+        break;
+    default:
+        error('Invalid API.');
+}
 
 
 $pinyin = new Pinyin;
 
-$result = $pinyin->{$setting['api']}($str, $setting['options']);
+$result = $pinyin->{$api}($str, $option);
 
 $array = array(
         'status'  => 'T',
@@ -48,6 +73,12 @@ $array = array(
 
 header('X-Time-usage:' . (microtime(true) - TIME_START));
 exit(json_encode($array));
+
+function error($error)
+{
+    header("HTTP/1.0 400 Bad Request");
+    exit(json_encode(array('status' => 'F', 'error' => $error , 'doc' => 'http://string2pinyin.sinaapp.com/doc.php')));
+}
 
 /**
  * Get an item from an array using "dot" notation.

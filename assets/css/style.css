@@ -1,13 +1,11 @@
-body,html{height:100%;width:100%;font-size:14px;background:#eee; color: #444;}
-body,h1,h2,h3,h4,h5,h6{font-family:"Helvetica Neue",Helvetica,"Noto Sans","ff-tisa-web-pro-1","ff-tisa-web-pro-2","Lucida Grande","Hiragino Sans GB","Microsoft YaHei","WenQuanYi Micro Hei",sans-serif; font-weight: normal;}
-code{padding:2px 4px;font-family:Monaco,Consolas,"Liberation Mono",Menlo,Courier,monospace;color:#6f6f6f;border:1px solid #eee;border-radius:8px;background:#f1f1f1}
+body,html{height:100%;width:100%;font-size:14px;background:#eee; color: #444; font-family:"Helvetica Neue","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Hiragino Kaku Gothic Pro",Meiryo,"Malgun Gothic",sans-serif;     -webkit-font-smoothing: antialiased;}
+body,h1,h2,h3,h4,h5,h6{font-family:"Helvetica Neue","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Hiragino Kaku Gothic Pro",Meiryo,"Malgun Gothic",sans-serif; font-weight: normal;}
+code{padding:2px 4px;font-family:Monaco,Consolas,"Liberation Mono",Menlo,Courier,monospace;color:#6f6f6f;border-radius:2px;background:#f1f1f1; font-size: 12px;}
 ul li{line-height:1.8em}
 h2{border-bottom:1px solid #eee;padding-bottom:10px;margin-bottom:10px; margin-top: 20px;}
 .wrapper{width:700px;margin:40px auto;background:#fff;padding:40px; border:1px solid #ccc; box-shadow: 1px 1px 5px rgba(0,0,0, .2); }
 .border{padding:10px;border:1px solid #eee;border-radius:8px;background:#fefefe}
-.json{white-space:pre;font-family:Monaco,Consolas,"Liberation Mono",Menlo,Courier,monospace;white-space:normal!important;font-size:12px}
-.json ul{list-style-type:none;padding:0;margin:0 0 0 26px}
-.json li{position:relative}
+.language-json{ font-family:Monaco,Consolas,"Liberation Mono",Menlo,Courier,monospace;font-size:12px}
 .hoverable{transition:background-color .2s ease-out 0s;-webkit-transition:background-color .2s ease-out 0s;display:inline-block}
 .hovered{transition-delay:.2s;-webkit-transition-delay:.2s}
 .selected{outline-style:solid;outline-width:1px;outline-style:dotted}
@@ -23,5 +21,3 @@ h2{border-bottom:1px solid #eee;padding-bottom:10px;margin-bottom:10px; margin-t
 .collapsible{margin-left:2em}
 .hoverable{padding-top:1px;padding-bottom:1px;padding-left:2px;padding-right:2px;border-radius:2px}
 .hovered{background-color:rgba(235,238,249,1)}
-.icon svg{display:inline-block;width:32px;height:32px;fill:#666}
-.icon svg:hover{fill:#1abc9c}

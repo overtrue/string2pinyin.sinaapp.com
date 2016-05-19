@@ -42,8 +42,9 @@ http://string2pinyin.sinaapp.com/?str=中文
 - 本项目基于 [overtrue/pinyin](https://github.com/overtrue/pinyin) 完成
 - 作者：[@overtrue](https://github.com/overtrue)
 - 微博：[@安正超](http://weibo.com/44294631)
-
 DOC;
+
+$parser = new Parsedown();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -59,7 +60,7 @@ DOC;
 <body>
     <div class="wrapper">
         <div class="docs">
-            <?= (new Parsedown())->text($docs); ?>
+            <?= $parser->text($docs) ?>
         </div>
 
         <script src="/assets/vendor/prism.js"></script>
