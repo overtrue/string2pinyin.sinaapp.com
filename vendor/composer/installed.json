@@ -1,0 +1,90 @@
+[
+    {
+        "name": "overtrue/pinyin",
+        "version": "3.0.1",
+        "version_normalized": "3.0.1.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/overtrue/pinyin.git",
+            "reference": "793e0a4e52e02ceafe7ce890eb2a903f0478ce26"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/overtrue/pinyin/zipball/793e0a4e52e02ceafe7ce890eb2a903f0478ce26",
+            "reference": "793e0a4e52e02ceafe7ce890eb2a903f0478ce26",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.4.0"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "~4.8"
+        },
+        "time": "2016-05-18 14:40:34",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Overtrue\\Pinyin\\": "src/"
+            }
+        },
+        "notification-url": "http://pkg.overtrue.me/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Carlos",
+                "homepage": "http://github.com/overtrue"
+            }
+        ],
+        "description": "Chinese to pinyin translator.",
+        "homepage": "https://github.com/overtrue/pinyin",
+        "keywords": [
+            "Chinese",
+            "Pinyin",
+            "cn2pinyin"
+        ]
+    },
+    {
+        "name": "erusev/parsedown",
+        "version": "1.6.0",
+        "version_normalized": "1.6.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/erusev/parsedown.git",
+            "reference": "3ebbd730b5c2cf5ce78bc1bf64071407fc6674b7"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/erusev/parsedown/zipball/3ebbd730b5c2cf5ce78bc1bf64071407fc6674b7",
+            "reference": "3ebbd730b5c2cf5ce78bc1bf64071407fc6674b7",
+            "shasum": ""
+        },
+        "time": "2015-10-04 16:44:32",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "Parsedown": ""
+            }
+        },
+        "notification-url": "http://pkg.overtrue.me/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Emanuil Rusev",
+                "email": "hello@erusev.com",
+                "homepage": "http://erusev.com"
+            }
+        ],
+        "description": "Parser for Markdown.",
+        "homepage": "http://parsedown.org",
+        "keywords": [
+            "markdown",
+            "parser"
+        ]
+    }
+]
