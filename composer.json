@@ -1,6 +1,6 @@
 {
     "require": {
-        "overtrue/pinyin": "~3.0",
+        "overtrue/pinyin": "dev-master",
         "erusev/parsedown": "^1.6"
     }
 }

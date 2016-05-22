@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "3bc938488c367337dccdccf57271f8e1",
-    "content-hash": "434aa38dfb24865db6564dd5329b7fca",
+    "hash": "e16df8a668e5a9d584326a8122fb419e",
+    "content-hash": "bd054778e7fbcac55ce4c97725141847",
     "packages": [
         {
             "name": "erusev/parsedown",
@@ -48,20 +48,20 @@
         },
         {
             "name": "overtrue/pinyin",
-            "version": "3.0.1",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/overtrue/pinyin.git",
-                "reference": "793e0a4e52e02ceafe7ce890eb2a903f0478ce26"
+                "reference": "484ebb5ce1f48f01099d0c88a823f7a99c0c51b8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/overtrue/pinyin/zipball/793e0a4e52e02ceafe7ce890eb2a903f0478ce26",
-                "reference": "793e0a4e52e02ceafe7ce890eb2a903f0478ce26",
+                "url": "https://packagist.phpcomposer.com/files/overtrue/pinyin/484ebb5ce1f48f01099d0c88a823f7a99c0c51b8.zip",
+                "reference": "484ebb5ce1f48f01099d0c88a823f7a99c0c51b8",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.4.0"
+                "php": ">=5.3"
             },
             "require-dev": {
                 "phpunit/phpunit": "~4.8"
@@ -72,7 +72,7 @@
                     "Overtrue\\Pinyin\\": "src/"
                 }
             },
-            "notification-url": "http://pkg.overtrue.me/downloads/",
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -89,13 +89,15 @@
                 "Pinyin",
                 "cn2pinyin"
             ],
-            "time": "2016-05-18 14:40:34"
+            "time": "2016-05-21 08:35:03"
         }
     ],
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "overtrue/pinyin": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],

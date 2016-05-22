@@ -224,7 +224,7 @@ class Pinyin
         $dictLoader->mapSurname(function ($dictionary) use (&$string) {
             foreach ($dictionary as $surname => $pinyin) {
                 if (strpos($string, $surname) === 0) {
-                    $string = $pinyin . mb_substr($string, mb_strlen($surname, 'UTF-8'), null, 'UTF-8');
+                    $string = $pinyin . mb_substr($string, mb_strlen($surname, 'UTF-8'), mb_strlen($string, 'UTF-8') - 1, 'UTF-8');
                     break;
                 }
             }
@@ -243,7 +243,7 @@ class Pinyin
      */
     public function splitWords($pinyin, $option)
     {
-        $split = array_filter(preg_split('/[^üāēīōūǖáéíóúǘǎěǐǒǔǚàèìòùǜa-z]+/iu', $pinyin));
+        $split = array_filter(preg_split('/[^üāēīōūǖáéíóúǘǎěǐǒǔǚàèìòùǜa-z\d]+/iu', $pinyin));
 
         if ($option !== self::UNICODE) {
             foreach ($split as $index => $pinyin) {
