@@ -33,7 +33,7 @@ http://string2pinyin.sinaapp.com/?str=中文
 {
     status: "F",
     error: "错误的请求,参数str不能为空。",
-    doc: "http://string2pinyin.sinaapp.com/doc.html"
+    doc: "http://string2pinyin.sinaapp.com/doc.php"
 }
 ```
 
